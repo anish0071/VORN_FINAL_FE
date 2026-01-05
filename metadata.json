@@ -1,0 +1,5 @@
+{
+  "name": "V.O.R.N - Visa Omni RAG Nexus",
+  "description": "A high-performance PCI DSS compliance validation tool leveraging Retrieval-Augmented Generation (RAG) for intelligent auditing, automated masking, and AI-powered row explanations.",
+  "requestFramePermissions": []
+}
