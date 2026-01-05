@@ -1,0 +1,136 @@
+{
+  "filename": "sample.csv",
+  "total_rows": 2,
+  "compliance_score": 0,
+  "rules_summary": [
+    {
+      "rule_id": "RULE_PCI_001_NO_FULL_PAN_STORAGE",
+      "name": "No full PAN storage",
+      "affected_rows": 2,
+      "status": "FAILED"
+    },
+    {
+      "rule_id": "RULE_PCI_002_NO_CVV_STORAGE",
+      "name": "No CVV storage",
+      "affected_rows": 0,
+      "status": "PASSED"
+    },
+    {
+      "rule_id": "RULE_PCI_003_NO_PAN_IN_LOGS",
+      "name": "No PAN in logs",
+      "affected_rows": 0,
+      "status": "PASSED"
+    },
+    {
+      "rule_id": "RULE_PCI_004_SECURE_CHANNEL_REQUIRED",
+      "name": "Secure channel required",
+      "affected_rows": 1,
+      "status": "PARTIAL"
+    },
+    {
+      "rule_id": "RULE_PCI_005_PAN_LUHN_VALID",
+      "name": "PAN Luhn validation",
+      "affected_rows": 1,
+      "status": "PARTIAL"
+    },
+    {
+      "rule_id": "RULE_PCI_006_PAN_MASKING_FORMAT",
+      "name": "PAN masking format",
+      "affected_rows": 0,
+      "status": "PASSED"
+    },
+    {
+      "rule_id": "RULE_PCI_007_NO_CARDHOLDER_FULL_NAME",
+      "name": "Avoid full cardholder name storage",
+      "affected_rows": 2,
+      "status": "FAILED"
+    },
+    {
+      "rule_id": "RULE_PCI_008_AUDIT_TRAIL_REQUIRED",
+      "name": "Audit trail required",
+      "affected_rows": 2,
+      "status": "FAILED"
+    },
+    {
+      "rule_id": "RULE_ORG_001_RETENTION_POLICY",
+      "name": "Retention policy enforcement",
+      "affected_rows": 1,
+      "status": "PARTIAL"
+    },
+    {
+      "rule_id": "RULE_ORG_002_CONSENT_FOR_PII",
+      "name": "Consent for PII",
+      "affected_rows": 0,
+      "status": "PASSED"
+    },
+    {
+      "rule_id": "RULE_ORG_003_PRIVACY_NOTICE_REQUIRED",
+      "name": "Privacy notice required",
+      "affected_rows": 1,
+      "status": "PARTIAL"
+    }
+  ],
+  "rows": [
+    {
+      "channel": "https",
+      "customer_location": "DE",
+      "pan_token": "V4EB-R9K1LQNC-1111",
+      "pan_last4": "1111",
+      "pan_masked": "XXXX-XXXX-XXXX-1111",
+      "log_message_masked": "[NO_LOG]",
+      "cardholder_name_masked": "J. Doe",
+      "retention_days": 30,
+      "gdpr_consent": true,
+      "privacy_notice_url": "https://example.com/privacy",
+      "fired_rules": [
+        "RULE_PCI_001_NO_FULL_PAN_STORAGE",
+        "RULE_PCI_007_NO_CARDHOLDER_FULL_NAME",
+        "RULE_PCI_008_AUDIT_TRAIL_REQUIRED",
+        "RULE_ORG_003_PRIVACY_NOTICE_REQUIRED"
+      ],
+      "fixes_applied": [
+        "MASKED_PAN_AND_TOKENIZED",
+        "PSEUDONYMIZED_NAME",
+        "ADDED_AUDIT_PLACEHOLDER",
+        "SET_DEFAULT_PRIVACY_URL"
+      ],
+      "row_compliant": false,
+      "processing_timestamp": "2026-01-04T22:49:42.594Z",
+      "compliance_warnings": []
+    },
+    {
+      "channel": "http",
+      "customer_location": "US",
+      "pan_token": null,
+      "pan_last4": "1111",
+      "pan_masked": "XXXX-XXXX-XXXX-1111",
+      "log_message_masked": "[NO_LOG]",
+      "cardholder_name_masked": "J. Roe",
+      "retention_days": 90,
+      "gdpr_consent": true,
+      "privacy_notice_url": "",
+      "fired_rules": [
+        "RULE_PCI_001_NO_FULL_PAN_STORAGE",
+        "RULE_PCI_004_SECURE_CHANNEL_REQUIRED",
+        "RULE_PCI_005_PAN_LUHN_VALID",
+        "RULE_PCI_007_NO_CARDHOLDER_FULL_NAME",
+        "RULE_PCI_008_AUDIT_TRAIL_REQUIRED",
+        "RULE_ORG_001_RETENTION_POLICY"
+      ],
+      "fixes_applied": [
+        "MASKED_PAN_AND_TOKENIZED",
+        "NO_AUTOMATED_FIX",
+        "FLAG_INVALID_PAN",
+        "PSEUDONYMIZED_NAME",
+        "ADDED_AUDIT_PLACEHOLDER",
+        "APPLIED_RETENTION_DEFAULT"
+      ],
+      "row_compliant": false,
+      "processing_timestamp": "2026-01-04T22:49:42.597Z",
+      "compliance_warnings": [
+        "Non-HTTPS channel for card data",
+        "PAN failed Luhn validation"
+      ]
+    }
+  ]
+}

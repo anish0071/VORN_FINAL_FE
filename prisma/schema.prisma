@@ -1,0 +1,64 @@
+// Prisma schema for V.O.R.N - SQLite development database
+datasource db {
+  provider = "sqlite"
+  
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Initial-Data {
+  pan             String         @id @default(cuid())
+  cardholder_name         String
+  merchant_id        String
+  log_message  String
+  channel String
+  retention_days   String
+  cvv        Int      
+
+  rows ProcessedRow[]
+  chatExplanations ChatExplanation[]
+
+  @@index([createdAt])
+}
+
+model ProcessedRow {
+  id        String     @id @default(cuid())
+  fileId    String
+  index     Int
+  rowJson   String
+  createdAt DateTime   @default(now())
+
+  file ProcessedFile @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  ruleHits RuleHit[]
+  explanations ChatExplanation[]
+
+  @@index([fileId])
+}
+
+model RuleHit {
+  id        String   @id @default(cuid())
+  rowId     String
+  ruleId    String
+  createdAt DateTime @default(now())
+
+  row ProcessedRow @relation(fields: [rowId], references: [id], onDelete: Cascade)
+
+  @@index([rowId])
+}
+
+model ChatExplanation {
+  id              String    @id @default(cuid())
+  fileId          String
+  rowId           String
+  rulesReferenced String
+  explanation     String
+  createdAt       DateTime  @default(now())
+
+  file ProcessedFile @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  row  ProcessedRow  @relation(fields: [rowId], references: [id], onDelete: Cascade)
+
+  @@index([fileId])
+  @@index([rowId])
+}

@@ -1,0 +1,27 @@
+{
+  "name": "vorn-agents",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "pretest": "npm run build",
+    "test": "mocha dist/tests/**/*.test.js",
+    "demo": "npm run build && node dist/scripts/runPipeline.js",
+    "dev": "next dev -p 3000"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^18.0.0",
+    "mocha": "^10.0.0",
+    "prisma": "^7.2.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.2.0",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.3",
+    "next": "^16.1.1",
+    "openai": "^6.15.0"
+  }
+}

@@ -1,0 +1,20 @@
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Prisma DB
+prisma/dev.db
+prisma/*.sqlite
+
+node_modules
+dist
+/.next
+# Env files
+.env
+.env.local
+.env.*.local
+
+node_modules
+dist
+/.next
