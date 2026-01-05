@@ -13,7 +13,7 @@
     "react-dom": "^19.2.3",
     "lucide-react": "^0.562.0",
     "three": "0.170.0",
-    "https://esm.sh/papaparse": "^5.4.1"
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
